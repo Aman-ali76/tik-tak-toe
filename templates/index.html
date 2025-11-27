@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scalable Tic Tac Toe</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎮 Scalable Tic Tac Toe</h1>
+        </header>
+
+        <!-- Score Panel -->
+        <div id="score-panel" class="panel score-panel">
+            <h3>🏆 Scoreboard</h3>
+            <div class="scores-container">
+                <div class="score-item">
+                    <span class="score-label">Player X</span>
+                    <span id="score-x" class="score-value">0</span>
+                </div>
+                <div class="score-item">
+                    <span class="score-label">Player O</span>
+                    <span id="score-o" class="score-value">0</span>
+                </div>
+                <div class="score-item" id="computer-score" style="display: none;">
+                    <span class="score-label">Computer</span>
+                    <span id="score-computer" class="score-value">0</span>
+                </div>
+            </div>
+            <button id="reset-scores" class="btn btn-reset">Reset Scores</button>
+        </div>
+
+        <main>
+            <!-- Game Settings -->
+            <div id="settings-panel" class="panel">
+                <h2>Game Settings</h2>
+                
+                <div class="setting-group">
+                    <label for="grid-size">Grid Size:</label>
+                    <select id="grid-size">
+                        <option value="3">3x3</option>
+                        <option value="4">4x4</option>
+                        <option value="5">5x5</option>
+                        <option value="6">6x6</option>
+                    </select>
+                </div>
+
+                <div class="setting-group">
+                    <label for="game-mode">Game Mode:</label>
+                    <select id="game-mode">
+                        <option value="two_player">Two Player</option>
+                        <option value="single_player">vs Computer</option>
+                    </select>
+                </div>
+
+                <div class="setting-group" id="difficulty-group" style="display: none;">
+                    <label for="difficulty">Difficulty:</label>
+                    <select id="difficulty">
+                        <option value="easy">Easy</option>
+                        <option value="medium">Medium</option>
+                        <option value="hard">Hard</option>
+                    </select>
+                </div>
+
+                <!-- Warning message for large grids -->
+                <div id="ai-warning" class="warning-message" style="display: none;">
+                    ⚠️ Computer opponent is only available for 3x3 grids due to performance limitations.
+                </div>
+
+                <button id="start-game" class="btn btn-primary">Start New Game</button>
+            </div>
+
+            <!-- Game Board -->
+            <div id="game-panel" class="panel" style="display: none;">
+                <div class="game-info">
+                    <div id="current-player" class="player-indicator">
+                        Current Player: <span id="player-symbol">X</span>
+                    </div>
+                    <button id="new-game-btn" class="btn btn-secondary">New Game</button>
+                </div>
+
+                <div id="game-board" class="game-board"></div>
+
+                <div id="game-status" class="game-status"></div>
+            </div>
+        </main>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
